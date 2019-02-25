@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <!-- <script src="main.js"></script> -->
+</head>
+
+<body>
+
+</body>
+
+</html>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <p>Add suitable fallback here.</p>
+    </canvas>
+
+    <script>
+        var canvas = document.querySelector('.myCanvas');
+        var width = canvas.width = window.innerWidth;
+        var height = canvas.height = window.innerHeight;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgb(0,0,0)';
+        ctx.fillRect(0, 0, width, height);
+
+        //draw path
+        //draw triangle
+        ctx.fillStyle = 'rgb(255, 0, 0)';
+        ctx.beginPath();
+        // move the pen to 50,50 without drawing anything
+        ctx.moveTo(50, 50);
+        // draw your path
+        ctx.lineTo(150, 50);
+        var triHeight = 50 * Math.tan(degToRad(60));
+        ctx.lineTo(100, 50 + triHeight);
+        ctx.lineTo(50, 50);
+        ctx.fill();
+
+        //draw circle
+        ctx.fillStyle = 'rgb(0,0,2550)'
+        ctx.beginPath();
+        // position of the center| circle radius | start and end angles | counterclockwise or clockwise (true anti, false clockwise)
+        ctx.arc(150, 106, 50, degToRad(0), degToRad(360));
+        ctx.fill();
+        //another circle
+        ctx.fillStyle = 'yellow';
+        ctx.beginPath();
+        ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+        ctx.lineTo(200, 106);
+        ctx.fill();
+
+
+        //degrees to radians
+        function degToRad(degrees) {
+            return degrees * Math.PI / 180;
+        };
+    </script>
+</body>
+
+</html>
